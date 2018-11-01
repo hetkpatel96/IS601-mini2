@@ -17,7 +17,8 @@ class UserTest extends TestCase
      */
     public function testInsertUser()
     {
-        $user = factory(\App\User::class)->create();
-        dd($user);
+        //$user = factory(\App\User::class)->create();
+        //dd($user);
     }
+
 }
