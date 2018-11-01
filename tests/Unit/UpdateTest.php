@@ -18,14 +18,10 @@ class UserUpdateTest extends TestCase
 
     public function testUpdateUser()
     {
-        $this->assertDatabaseHas('users', ["name" => "Brennon Runte"]);
-        //$user=factory(\App\User::class)->make();
-        //$user->name='Steve Smith';
-        //$this->assertTrue($user->save());
-        //dd($user);
-        $user = factory(\App\User::class)->create([
-            'name' => 'Steve Smith',
-        ]);
-        dd($user);
+        $user = User::find(5);
+        $user->name = 'Steve Smith';
+        $user->save();
+        $this->assertDatabaseHas('users', ["name" => "Steve Smith"]);
+
     }
 }

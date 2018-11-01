@@ -8,17 +8,17 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\User;
 use App\Car;
 
-class UserTest extends TestCase
+class CountTest extends TestCase
 {
     /**
      * A basic test example.
      *
      * @return void
      */
-   public function testInsertUser()
+    public function testUserCount()
     {
-        $user = factory(\App\User::class)->make();
-        $this->assertDatabaseHas('users', ["name" => "Steve Smith"]);
-
+        $users=User::all();
+        $users->count();
+        $this->assertEquals(50,count($users),"Should return 50 users");
     }
 }
