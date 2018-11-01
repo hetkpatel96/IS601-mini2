@@ -17,8 +17,22 @@ class UserTest extends TestCase
      */
     public function testInsertUser()
     {
-        //$user = factory(\App\User::class)->create();
-        //dd($user);
+        $user = factory(\App\User::class)->create();
+        $this->assertDatabaseHas('users', ["name" => "Brennon Runte"]);
+    }
+    public function testUpdateUser()
+    {
+        $user = factory(\App\User::class)->create([
+            'name' => 'Steve Smith',
+        ]);
+        $this->assertDatabaseHas('users', ["name" => "Steve Smith"]);
+    }
+    public function testDeleteUser()
+    {
+        $user = User::find(46);
+        $user->delete();
+        $user = User::all();
+        $this->assertDatabaseMissing('users',['id' => '46']);
     }
 
 }
